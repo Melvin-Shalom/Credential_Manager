@@ -1,3 +1,3 @@
-<head>
+<h1>
   TNP Minor Project 6th Sem
-</head>
+</h1>
