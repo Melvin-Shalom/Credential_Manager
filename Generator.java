@@ -159,7 +159,6 @@ public class Generator
         boolean IncludeLower = false;
         boolean IncludeNum = false;
         boolean IncludeSym = false;
-
         boolean correctParams;
 
         out.println();
