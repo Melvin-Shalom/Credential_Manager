@@ -1,4 +1,11 @@
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.net.http.HttpRequest.BodyPublishers;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
+import static java.lang.System.*;
 
 public class Generator
 {
@@ -14,15 +21,20 @@ public class Generator
     }
 
     public void mainLoop() {
-        System.out.println();
-        System.out.println("Welcome to Credential Manager ;)\n--------Select 1,2,3,4,5--------");
+        out.println();
+        out.println("Welcome to Credential Manager ;)\n--------Select 1,2,3,4,5--------");
         printMenu();
 
         String userOption = "-1";
 
         while (!userOption.equals("5")) {
 
+            try {
             userOption = keyboard.next();
+        } catch (NoSuchElementException e) {
+            err.println("Input error: " + e.getMessage());
+            // Handle the error or exit gracefully
+        }
 
             switch (userOption) {
                 case "1" -> {
@@ -34,7 +46,7 @@ public class Generator
                     printMenu();
                 }
                 case "3" -> {
-                    System.out.println("\nThis Feature is Under Development, Sorry for the inconvienence");
+                    encDecry();
                     printMenu();
                 }
                 case "4" -> {
@@ -44,8 +56,8 @@ public class Generator
                 case "5" -> printQuit();
                 
                 default -> {
-                    System.out.println();
-                    System.out.println("Please Select one of the given Commands");
+                    out.println();
+                    out.println("Please Select one of the given Commands");
                     printMenu();
                 }
             }
@@ -69,9 +81,68 @@ public class Generator
         return new Password(pass.toString());
     }
 
+    
+    private void encDecry(){
+        Scanner scanner = new Scanner(in);
+
+        while (true) {
+            out.println();
+            out.print("Choose an option (view, add, x): ");
+            String mode = scanner.nextLine().toLowerCase();
+
+            if (mode.equals("view") || mode.equals("add")) {
+                HttpClient client = HttpClient.newHttpClient();
+                HttpRequest request;
+                if (mode.equals("view")) {
+                    out.print("Pass: ");
+                    String n = scanner.nextLine();
+                    if (n.equals("kazu")) {
+                        request = HttpRequest.newBuilder()
+                                .uri(URI.create("http://localhost:5000/view"))
+                                .GET()
+                                .build();
+                    }
+                    else {
+                        out.println("Wromg PassKey");
+                        continue;
+                    }
+                }
+                else { // mode.equals("add")
+                    out.print("Account Name: ");
+                    String name = scanner.nextLine();
+                    out.print("Password: ");
+                    String password = scanner.nextLine();
+                    String requestBody = String.format("{\"name\": \"%s\", \"password\": \"%s\"}", name, password);
+
+                    request = HttpRequest.newBuilder()
+                            .uri(URI.create("http://localhost:5000/add"))
+                            .header("Content-Type", "application/json")
+                            .POST(BodyPublishers.ofString(requestBody))
+                            .build();
+                }
+                try {
+                    HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+                    out.println("Response body: " + response.body());
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            else if (mode.equals("x")) {
+                break;
+            }
+            else {
+                out.println("Invalid Mode.");
+            }
+        }
+        // scanner.close();
+        // out.println();
+    }
+
+
     private void printInfo() {
-        System.out.println();
-        System.out.print(
+        out.println();
+        out.print(
             "~ Aim for passwords with a minimum length of 8 characters, or longer if allowed.\n" +
             "~ Utilize a combination of lowercase and uppercase letters, numbers, and symbols.\n" +
             "~ Avoid using the same password for multiple accounts or systems.\n" +
@@ -91,15 +162,15 @@ public class Generator
 
         boolean correctParams;
 
-        System.out.println();
-        System.out.print("Hello, welcome to the Password Generator :) answer the following questions by Yes or No (y/n)\n\n");
+        out.println();
+        out.print("Hello, welcome to the Password Generator :) answer the following questions by Yes or No (y/n)\n\n");
 
         do {
             String input;
             correctParams = false;
 
             do {
-                System.out.print("Do you want Lowercase letters \"abcd...\" to be used? ");
+                out.print("Do you want Lowercase letters \"abcd...\" to be used? ");
                 input = keyboard.next();
                 PasswordRequestError(input);
             } while (!input.equalsIgnoreCase("y") && !input.equalsIgnoreCase("n"));
@@ -107,7 +178,7 @@ public class Generator
             if (isInclude(input)) IncludeLower = true;
 
             do {
-                System.out.print("Do you want Uppercase letters \"ABCD...\" to be used? ");
+                out.print("Do you want Uppercase letters \"ABCD...\" to be used? ");
                 input = keyboard.next();
                 PasswordRequestError(input);
             } while (!input.equalsIgnoreCase("y") && !input.equalsIgnoreCase("n"));
@@ -115,7 +186,7 @@ public class Generator
             if (isInclude(input)) IncludeUpper = true;
 
             do {
-            System.out.print("Do you want Numbers \"1234...\" to be used? ");
+            out.print("Do you want Numbers \"1234...\" to be used? ");
             input = keyboard.next();
             PasswordRequestError(input);
             } while (!input.equalsIgnoreCase("y") && !input.equalsIgnoreCase("n"));
@@ -123,7 +194,7 @@ public class Generator
             if (isInclude(input)) IncludeNum = true;
 
             do {
-            System.out.print("Do you want Symbols \"!@#$...\" to be used? ");
+            out.print("Do you want Symbols \"!@#$...\" to be used? ");
             input = keyboard.next();
             PasswordRequestError(input);
             } while (!input.equalsIgnoreCase("y") && !input.equalsIgnoreCase("n"));
@@ -132,21 +203,21 @@ public class Generator
 
             //No Pool Selected
             if (!IncludeUpper && !IncludeLower && !IncludeNum && !IncludeSym) {
-                System.out.println("You have selected no characters to generate your password, at least one of your answers should be Yes\n");
+                out.println("You have selected no characters to generate your password, at least one of your answers should be Yes\n");
                 correctParams = true;
             }
 
         } while (correctParams);
 
-        System.out.println("Great! Good Job");
-        System.out.print("Now enter the length of the password: ");
+        out.println("Great! Good Job");
+        out.print("Now enter the length of the password: ");
 
         int length = keyboard.nextInt();
 
         final Generator generator = new Generator(IncludeUpper, IncludeLower, IncludeNum, IncludeSym);
         final Password password = generator.GeneratePassword(length);
 
-        System.err.println("Your generated password -> " + password);
+        err.println("Your generated password -> " + password);
     }
 
     private boolean isInclude(String Input) {
@@ -160,33 +231,34 @@ public class Generator
 
     private void PasswordRequestError(String i) {
         if (!i.equalsIgnoreCase("y") && !i.equalsIgnoreCase("n")) {
-            System.out.println("You have entered something incorrect let's go over it again \n");
+            out.println("You have entered something incorrect let's go over it again \n");
         }
     }
 
     private void checkPassword() {
         String input;
 
-        System.out.print("\nEnter your password:");
+        out.print("\nEnter your password:");
         input = keyboard.next();
 
         final Password p = new Password(input);
-        System.out.println(p.calculateScore());
+        out.println(p.calculateScore());
     }
 
     private void printMenu() {
-        System.out.println();
-        System.out.println("1 - Password Generator");
-        System.out.println("2 - Password Strength Check");
-        System.out.println("3 - Password Viewer (Under Progress)");
-        System.out.println("4 - Useful Information");
-        System.out.println("5 - Quit");
-        System.out.println();
-        System.out.print("Choice: ");
+        out.println();
+        out.println("1 - Password Generator");
+        out.println("2 - Password Strength Check");
+        out.println("3 - Password Viewer (Under Progress)");
+        out.println("4 - Useful Information");
+        out.println("5 - Quit");
+        out.println();
+        out.print("Choice: ");
     }
 
     private void printQuit() {
-        System.out.println("Adios, Closing...");
-        System.exit(0);
+        out.println("Adios, Closing...");
+        exit(0);
     }
+    
 }

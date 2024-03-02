@@ -1,42 +1,45 @@
+from flask import Flask, request
 from cryptography.fernet import Fernet
+import json
 
+PY_dec = Flask(__name__)
 
 def load_key():
-    file = open('dec.key', 'rb')
+    file = open('PY_dec.key', 'rb')
     key = file.read()
     file.close()
     return key
 
-
 key = load_key()
 fer = Fernet(key)
 
-
+@PY_dec.route('/view', methods=['GET'])
 def view():
-    with open("dec.txt", "r") as f:
+    credentials = []
+    with open("PY_dec.txt", "r") as f:
         for line in f.readlines():
             data = line.rstrip()
             user, passw = data.split("|")
-            print("User:", user, "| password:", fer.decrypt(passw.encode()).decode())
-
-
-def add():
-    name = input("Account Name: ")
-    pwd = input("Password: ")
+            decrypted_passw = fer.decrypt(passw.encode()).decode()
+            credentials.append({"user": user, "password": decrypted_passw})
     
-    with open("dec.txt", "a") as f:
-        f.write(name + "|" + fer.encrypt(pwd.encode()).decode())
+    # Manually format credentials list as JSON string with newlines
+    json_data = '[\n'
+    for cred in credentials:
+        json_data += json.dumps(cred) + ',\n'
+    json_data = json_data.rstrip(',\n')  # Remove trailing comma and newline
+    json_data += '\n]'
 
+    return json_data
 
-while True:
-    mode = input("\nAccess Control Panel: Review existing credentials, Generate new passkeys, or Terminate session? (view, add, x): ").lower()
+@PY_dec.route('/add', methods=['POST'])
+def add():
+    name = request.json.get("name")
+    pwd = request.json.get("password")
+    with open("PY_dec.txt", "a") as f:
+        encrypted_pwd = fer.encrypt(pwd.encode()).decode()
+        f.write(name + "|" + encrypted_pwd + "\n")
+    return "Credentials added successfully"
 
-    if mode == "view":
-        view()
-    elif mode == "add":
-        add()
-    elif mode == "x":
-        break
-    else:
-        print("Invalid Mode.")
-        continue
+if __name__ == '__main__':
+    PY_dec.run(debug=True)
