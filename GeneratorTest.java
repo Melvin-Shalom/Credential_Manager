@@ -1,6 +1,3 @@
-// import static org.junit.jupiter.api.Assertions.*;
-// import org.junit.jupiter.api.Test;
-
 class GeneratorTest {
 	private final Password password= new Password("Secret");
 	private final Alphabet firstAlphabet = new Alphabet(true,false,false,false);
@@ -45,3 +42,4 @@ class GeneratorTest {
 	}
 
 }
+
