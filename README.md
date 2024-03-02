@@ -12,17 +12,17 @@
 <ol>
   <li>
     <strong>Activate the Virtualenv</strong><br>
-    <small>Navigate to your project directory and activate the virtual environment:</small><br>
+    <small>Navigate to your project directory and activate the virtual environment:</small>
     <code>source venv/bin/activate</code>
   </li>
   <li>
     <strong>Execute the PY_dec.py file</strong><br>
-    <small>Run the Python decryption script:</small><br>
+    <small>Run the Python decryption script:</small>
     <code>python PY_dec.py</code>
   </li>
   <li>
     <strong>Execute the Main.java file</strong><br>
-    <small>Compile and run the Java main program:</small><br>
+    <small>Compile and run the Java main program:</small>
     <code>javac Main.java && java Main</code>
   </li>
 </ol>
