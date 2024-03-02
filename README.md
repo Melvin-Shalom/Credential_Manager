@@ -15,3 +15,5 @@ To know how the Virtual Environment works, <a href="https://www.freecodecamp.org
     </ol>
 </p>
 
+<p>This is an example of a line of <code>HTML</code> code.</p>
+
