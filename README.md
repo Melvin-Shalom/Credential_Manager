@@ -6,8 +6,8 @@ Crafting a Password Inspector, Password Generator, and Password Manager with Enc
 
 <h2>Step for Execution:</h2>
 <p>
-<br>1) Activate the Virtualenv</br>
-<br>2) Execute the PY_dec.py file</br>
-<br>3) Execute the Main.java file </br>
+<br>1) Activate the Virtualenv
+2) Execute the PY_dec.py file
+3) Execute the Main.java file </br>
 </p>
 
