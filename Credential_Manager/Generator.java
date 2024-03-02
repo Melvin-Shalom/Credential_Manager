@@ -31,10 +31,10 @@ public class Generator
 
             try {
             userOption = keyboard.next();
-        } catch (NoSuchElementException e) {
-            err.println("Input error: " + e.getMessage());
-            // Handle the error or exit gracefully
-        }
+            }
+            catch (NoSuchElementException e) {
+                err.println("Input error: " + e.getMessage());
+            }
 
             switch (userOption) {
                 case "1" -> {

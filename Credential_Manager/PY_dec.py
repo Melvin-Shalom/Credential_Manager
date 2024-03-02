@@ -23,11 +23,10 @@ def view():
             decrypted_passw = fer.decrypt(passw.encode()).decode()
             credentials.append({"Username": user, "Password": decrypted_passw})
     
-    # Manually format credentials list as JSON string with newlines
     json_data = '[\n'
     for cred in credentials:
         json_data += json.dumps(cred) + ',\n'
-    json_data = json_data.rstrip(',\n')  # Remove trailing comma and newline
+    json_data = json_data.rstrip(',\n') 
     json_data += '\n]'
 
     return json_data
