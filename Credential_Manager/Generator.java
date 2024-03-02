@@ -22,7 +22,7 @@ public class Generator
 
     public void mainLoop() {
         out.println();
-        out.println("Welcome to Credential Manager ;)\n--------Select 1,2,3,4,5--------");
+        out.println("Welcome to Credential Manager ;)\n------- Select 1,2,3,4,5 -------");
         printMenu();
 
         String userOption = "-1";
@@ -83,19 +83,22 @@ public class Generator
 
     
     private void encDecry(){
-        Scanner scanner = new Scanner(in);
 
         while (true) {
             out.println();
             out.print("Choose an option (view, add, x): ");
-            String mode = scanner.nextLine().toLowerCase();
+            String mode;
+            
+            do {
+                mode = keyboard.nextLine().trim().toLowerCase();
+            } while (mode.isEmpty());
 
             if (mode.equals("view") || mode.equals("add")) {
                 HttpClient client = HttpClient.newHttpClient();
                 HttpRequest request;
                 if (mode.equals("view")) {
-                    out.print("Pass: ");
-                    String n = scanner.nextLine();
+                    out.print("Master Password: ");
+                    String n = keyboard.nextLine();
                     if (n.equals("kazu")) {
                         request = HttpRequest.newBuilder()
                                 .uri(URI.create("http://localhost:5000/view"))
@@ -108,10 +111,10 @@ public class Generator
                     }
                 }
                 else { // mode.equals("add")
-                    out.print("Account Name: ");
-                    String name = scanner.nextLine();
+                    out.print("Username: ");
+                    String name = keyboard.nextLine();
                     out.print("Password: ");
-                    String password = scanner.nextLine();
+                    String password = keyboard.nextLine();
                     String requestBody = String.format("{\"name\": \"%s\", \"password\": \"%s\"}", name, password);
 
                     request = HttpRequest.newBuilder()
@@ -135,8 +138,6 @@ public class Generator
                 out.println("Invalid Mode.");
             }
         }
-        // scanner.close();
-        // out.println();
     }
 
 
@@ -237,7 +238,7 @@ public class Generator
     private void checkPassword() {
         String input;
 
-        out.print("\nEnter your password:");
+        out.print("\nEnter your password: ");
         input = keyboard.next();
 
         final Password p = new Password(input);
@@ -247,8 +248,8 @@ public class Generator
     private void printMenu() {
         out.println();
         out.println("1 - Password Generator");
-        out.println("2 - Password Strength Check");
-        out.println("3 - Password Viewer (Under Progress)");
+        out.println("2 - Password Evaluator");
+        out.println("3 - Password Organiser");
         out.println("4 - Useful Information");
         out.println("5 - Quit");
         out.println();
@@ -256,8 +257,7 @@ public class Generator
     }
 
     private void printQuit() {
-        out.println("Adios, Closing...");
+        out.println("Adios, Closing......");
         exit(0);
     }
-    
 }
