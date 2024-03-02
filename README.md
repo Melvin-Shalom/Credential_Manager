@@ -10,8 +10,20 @@
 
 <h2>Step for Execution:</h2>
 <ol>
-  <li>Activate the Virtual Environment</li>
-  <li>Execute the PY_dec.py file by <code>python PY_dec.py</code></li>
-  <li>Execute the Main.java file by <code>javac Main.java && java Main</code></li>
+  <li>
+    <strong>Activate the Virtualenv</strong><br>
+    <small>Navigate to your project directory and activate the virtual environment:</small><br>
+    <code>source venv/bin/activate</code>
+  </li>
+  <li>
+    <strong>Execute the PY_dec.py file</strong><br>
+    <small>Run the Python decryption script:</small><br>
+    <code>python PY_dec.py</code>
+  </li>
+  <li>
+    <strong>Execute the Main.java file</strong><br>
+    <small>Compile and run the Java main program:</small><br>
+    <code>javac Main.java && java Main</code>
+  </li>
 </ol>
 
