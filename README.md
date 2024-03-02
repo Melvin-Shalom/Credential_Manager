@@ -10,7 +10,7 @@
 
 <h2>Step for Execution:</h2>
 <ol>
-  <li>Activate the Virtualenv</li>
+  <li>Activate the Virtual Environment</li>
   <li>Execute the PY_dec.py file by <code>python PY_dec.py</code></li>
   <li>Execute the Main.java file by <code>javac Main.java && java Main</code></li>
 </ol>
