@@ -17,12 +17,12 @@
   </li>
   <li>
     <strong>Execute the PY_dec.py file</strong><br>
-    <small>Run the Python decryption script:</small>
+    <small>Execute the Python script:</small>
     <code>python PY_dec.py</code>
   </li>
   <li>
     <strong>Execute the Main.java file</strong><br>
-    <small>Compile and run the Java main program:</small>
+    <small>Execute the Java main program:</small>
     <code>javac Main.java && java Main</code>
   </li>
 </ol>
