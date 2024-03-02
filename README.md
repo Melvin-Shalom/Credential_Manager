@@ -10,10 +10,8 @@ To know how the Virtual Environment works, <a href="https://www.freecodecamp.org
 <p>
     <ol>
       <li>Activate the Virtualenv</li>
-      <li>Execute the PY_dec.py file using <code>python PY_dec.py</code></li>
-      <li>Execute the Main.java file</li>
+      <li>Execute the PY_dec.py file by <code>python PY_dec.py</code></li>
+      <li>Execute the Main.java file by <code>javac Main.java && java Main</code></li>
     </ol>
 </p>
-
-<p>This is an example of a line of <code>HTML</code> code.</p>
 
