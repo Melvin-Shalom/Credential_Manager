@@ -27,4 +27,3 @@ A program for managing passwords was developed using Java and Python. The <stron
     <code>javac Main.java && java Main</code>
   </li>
 </ol>
-
