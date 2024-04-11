@@ -21,6 +21,8 @@ public Generator(boolean IncludeUpper, boolean IncludeLower, boolean IncludeNum,
 }
 
 public void mainLoop() {
+    System.out.print("\033[H\033[2J");
+    System.out.flush();
     out.println();
     out.println("Welcome to Credential Manager ;)");
     printMenu();
@@ -260,6 +262,10 @@ private void printMenu() {
 
 private void printQuit() {
     out.println("Adios, Closing......");
+    out.println();
+    out.println();
+    out.println();
+    
     exit(0);
 }
 
