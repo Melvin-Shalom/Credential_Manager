@@ -1,4 +1,3 @@
-import static java.lang.System.*;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -6,6 +5,7 @@ import java.net.http.HttpResponse;
 import java.net.http.HttpRequest.BodyPublishers;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
+import static java.lang.System.*;
 
 public class Generator
 {
@@ -22,7 +22,7 @@ public Generator(boolean IncludeUpper, boolean IncludeLower, boolean IncludeNum,
 
 public void mainLoop() {
     out.println();
-    out.println("Welcome to Credential Manager ;)\n------- Select 1,2,3,4,5 -------");
+    out.println("Welcome to Credential Manager ;)");
     printMenu();
 
     String userOption = "-1";
@@ -57,8 +57,8 @@ public void mainLoop() {
             
             default -> {
                 out.println();
-                out.println("Please Select one of the given Commands");
                 printMenu();
+                out.println("Please Select one of the given Commands");
             }
         }
     }
@@ -99,7 +99,7 @@ private void encDecry(){
             if (mode.equals("view")) {
                 out.print("Master Password: ");
                 String n = keyboard.nextLine();
-                if (n.equals("kazu")) {
+                if (n.equals("spark")) {
                     request = HttpRequest.newBuilder()
                             .uri(URI.create("http://localhost:5000/view"))
                             .GET()
@@ -217,7 +217,7 @@ private void requestPassword() {
     final Generator generator = new Generator(IncludeUpper, IncludeLower, IncludeNum, IncludeSym);
     final Password password = generator.GeneratePassword(length);
 
-    err.println("Your generated password -> " + password);
+    out.println("\nYour generated password -> " + password);
 }
 
 private boolean isInclude(String Input) {
@@ -246,6 +246,8 @@ private void checkPassword() {
 }
 
 private void printMenu() {
+    out.println();
+    out.println("------- Select 1,2,3,4,5 -------");
     out.println();
     out.println("1 - Password Generator");
     out.println("2 - Password Evaluator");
