@@ -27,3 +27,19 @@ A program for managing passwords was developed using Java and Python. The <stron
     <code>javac Main.java && java Main</code>
   </li>
 </ol>
+
+
+<h3>Features:</h3>
+<ul>
+  <li>Generates Truly Random Passwords.</li>
+  <li>Stores Passwords in Encrypted Form.</li>
+  <li>Validates the Practical Usage of Your Password.</li>
+</ul>
+
+<h3>Requirements:</h3>
+<ul>
+  <li>Python 3.11</li>
+  <li>Java SE 17.0.1</li>
+  <li>Flask Module</li>
+  <li>CryptoGraphy Module</li>
+</ul>
