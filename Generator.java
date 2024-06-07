@@ -84,20 +84,20 @@ Password GeneratePassword(int length) {
 }
 
 
-private void encDecry(){
-
+private void encDecry() {
     while (true) {
         out.println();
-        out.print("Choose an option (view, add, x): ");
+        out.print("Choose an option (view, add, delete, x): ");
         String mode;
-        
+
         do {
             mode = keyboard.nextLine().trim().toLowerCase();
         } while (mode.isEmpty());
 
-        if (mode.equals("view") || mode.equals("add")) {
+        if (mode.equals("view") || mode.equals("add") || mode.equals("delete")) {
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request;
+
             if (mode.equals("view")) {
                 out.print("Master Password: ");
                 String n = keyboard.nextLine();
@@ -106,37 +106,70 @@ private void encDecry(){
                             .uri(URI.create("http://localhost:5000/view"))
                             .GET()
                             .build();
-                }
-                else {
-                    out.println("Wromg PassKey");
+                } else {
+                    out.println("Wrong PassKey");
                     continue;
                 }
             }
-            else { // mode.equals("add")
-                out.print("Username: ");
-                String name = keyboard.nextLine();
-                out.print("Password: ");
-                String password = keyboard.nextLine();
-                String requestBody = String.format("{\"name\": \"%s\", \"password\": \"%s\"}", name, password);
+            else if (mode.equals("add")) {
+            out.print("Website: ");
+            String website = keyboard.nextLine();
+            out.print("Username: ");
+            String name = keyboard.nextLine();
+            out.print("Password: ");
+            String password = keyboard.nextLine();
+            String requestBody = String.format("{\"website\": \"%s\", \"name\": \"%s\", \"password\": \"%s\"}", website, name, password);
 
-                request = HttpRequest.newBuilder()
-                        .uri(URI.create("http://localhost:5000/add"))
-                        .header("Content-Type", "application/json")
-                        .POST(BodyPublishers.ofString(requestBody))
-                        .build();
-            }
+            request = HttpRequest.newBuilder().uri(URI.create("http://localhost:5000/add")).header("Content-Type", "application/json").POST(BodyPublishers.ofString(requestBody)).build();
+            
             try {
                 HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-                out.println("Response body: " + response.body());
-            }
-            catch (Exception e) {
+                String responseBody = response.body();
+                
+                if (responseBody.contains("The same username and password combination already exists"))
+                {
+                    out.print("\nDo you want to add this credential? (yes/no): ");
+                    String answer = keyboard.nextLine();
+                    
+                    if ("no".equalsIgnoreCase(answer)) {
+                        out.println("Credential not added.\n");
+                        continue;
+                    }
+                }
+                
+                out.println("Response body: " + responseBody);
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        else if (mode.equals("x")) {
+
+            
+            else if (mode.equals("delete")) {
+                out.print("Website: ");
+                String website = keyboard.nextLine();
+                out.print("Username: ");
+                String name = keyboard.nextLine();
+                String requestBody = String.format("{\"website\": \"%s\", \"name\": \"%s\"}", website, name);
+
+                request = HttpRequest.newBuilder()
+                        .uri(URI.create("http://localhost:5000/delete"))
+                        .header("Content-Type", "application/json")
+                        .POST(BodyPublishers.ofString(requestBody))
+                        .build();
+            } else {
+                out.println("Invalid Mode.");
+                continue;
+            }
+
+            try {
+                HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+                out.println("Response body: " + response.body());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else if (mode.equals("x")) {
             break;
-        }
-        else {
+        } else {
             out.println("Invalid Mode.");
         }
     }

@@ -19,7 +19,7 @@ A program for managing passwords was developed using Java and Python. The <stron
   <li>
     <strong>Execute the PY_dec.py file</strong><br>
     <small>Execute the Python script:</small>
-    <code>sudo /venv/bin/python3 PY_dec.py</code>
+    <code>python PY_dec.py</code>
   </li>
   <li>
     <strong>Execute the Main.java file</strong><br>
@@ -27,19 +27,3 @@ A program for managing passwords was developed using Java and Python. The <stron
     <code>javac Main.java && java Main</code>
   </li>
 </ol>
-
-
-<h2>Features:</h2>
-<ul>
-  <li>Generates Truly Random Passwords.</li>
-  <li>Stores Passwords in Encrypted Form.</li>
-  <li>Validates the Practical Usage of Your Password.</li>
-</ul>
-
-<h2>Requirements:</h2>
-<ul>
-  <li>Python 3.11</li>
-  <li>Java SE 17.0.1</li>
-  <li>Flask Module</li>
-  <li>CryptoGraphy Module</li>
-</ul>

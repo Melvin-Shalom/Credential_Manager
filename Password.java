@@ -74,7 +74,7 @@ public class Password {
         }
         else if (Score >= 3) {
             return "This is a medium password :/ try making it better";
-        }
+       }
         else {
             return "This is a weak password :( definitely find a new one";
         }
