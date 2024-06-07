@@ -29,14 +29,14 @@ A program for managing passwords was developed using Java and Python. The <stron
 </ol>
 
 
-<h3>Features:</h3>
+<h2>Features:</h2>
 <ul>
   <li>Generates Truly Random Passwords.</li>
   <li>Stores Passwords in Encrypted Form.</li>
   <li>Validates the Practical Usage of Your Password.</li>
 </ul>
 
-<h3>Requirements:</h3>
+<h2>Requirements:</h2>
 <ul>
   <li>Python 3.11</li>
   <li>Java SE 17.0.1</li>
