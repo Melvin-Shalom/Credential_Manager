@@ -19,7 +19,7 @@ A program for managing passwords was developed using Java and Python. The <stron
   <li>
     <strong>Execute the PY_dec.py file</strong><br>
     <small>Execute the Python script:</small>
-    <code>python PY_dec.py</code>
+    <code> sudo /venv/bin/python3 PY_dec.py</code>
   </li>
   <li>
     <strong>Execute the Main.java file</strong><br>
