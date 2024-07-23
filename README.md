@@ -2,10 +2,29 @@
 
 <h2>Discription</h2>
 <p>
-A program for managing passwords was developed using Java and Python. The <strong>Cryptography</strong> module from Python was utilized to ensure data security, and the <strong>Flask</strong> framework was deployed to establish connectivity between Python and Java using API. Additionally, a <strong>virtual environment</strong> was set up to manage dependencies effectively. The required modules are documented in a file named <strong><em>Creden_Req.txt</em></strong>.
+A Console Based Application for managing passwords was developed using Java and Python. The <strong>Cryptography</strong> module from Python was utilized to ensure data security, and the <strong>Flask</strong> framework was deployed to establish connectivity between Python and Java using API. Additionally, a <strong>virtual environment</strong> was set up to manage dependencies effectively. The required modules are documented in a file named <strong><em>Creden_Req.txt</em></strong>.
 </p>
 
 <p>To know how the Virtual Environment works, <a href="https://www.freecodecamp.org/news/how-to-setup-virtual-environments-in-python/" target="_blank">visit here</a>.</p>
+
+<h2>Features</h2>
+<ul>
+	<li>Allows user to Create Truly Random Alpha-Numeric Password.</li>
+	<li>The user can also alter the Length of Password.</li>
+	<li>With its Password Strength Checker, the user can user can check the check of the Password Provided.</li>
+	<li>The Password Organiser Feature uses SHA-256 Algorithm.</li>
+	<li>Stores User Password in an Encrypted Format to keep the Password Encrypted and protected from being read by Others.</li>
+</ul>
+
+<h2>Requirements</h2>
+<ul>
+	<li>Java 17</li>
+	<li>Python 3.11</li>
+	<li>Flask Module</li>
+	<li>Cryptography Module</li>
+	<li>SQLAlchemy Module</li>
+  	<li>Terminal or Command Prompt</li>
+</ul>
 
 <h2>Steps for Execution</h2>
 <ol>
