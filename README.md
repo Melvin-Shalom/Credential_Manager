@@ -42,7 +42,7 @@ A Console Based Application for managing passwords was developed using Java and 
 	</li>
 	<li>
 		<h4>Install the Requirements</h4>
-		<code>pip install -r requirements.txt</code>
+		<code>pip install -r Creden_Req.txt</code>
 	</li>
 	<li>
 		<h4>Execute the Python Script</h4>
