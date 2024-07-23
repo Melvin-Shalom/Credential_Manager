@@ -20,9 +20,9 @@ A Console Based Application for managing passwords was developed using Java and 
 <ul>
 	<li>Java 17</li>
 	<li>Python 3.11</li>
-	<li>Flask Module</li>
-	<li>Cryptography Module</li>
-	<li>SQLAlchemy Module</li>
+	<li>Flask 3.0</li>
+	<li>Cryptography 42.0</li>
+	<li>SQLAlchemy 2.0</li>
   	<li>Terminal or Command Prompt</li>
 </ul>
 
