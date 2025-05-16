@@ -18,7 +18,7 @@ A secure, console-based password manager built using Java and Python. This proje
 
 - **Password to access Password Organiser:** `spark`
 
-## Requirements
+## System Requirements
 
 - Java 17  
 - Python 3.11  
@@ -70,7 +70,18 @@ A secure, console-based password manager built using Java and Python. This proje
 
 - Use the Java client to interact with the secure credential system.  
 - Backend logic like encryption, password generation, and strength checks run via Flask APIs.  
-- All passwords are stored encrypted and processed securely with modern cryptographic standards.  
+- All passwords are stored encrypted and processed securely with modern cryptographic standards.
+
+## Future Scope
+
+- Implement user authentication with usernames alongside passwords for enhanced security.  
+- Add a graphical user interface (GUI) for easier, more intuitive interaction.  
+- Integrate multi-factor authentication (MFA) to boost account protection.  
+- Enable cloud syncing and backup to access passwords across devices securely.  
+- Support importing/exporting password data in encrypted formats for portability.  
+- Incorporate advanced analytics to detect weak or reused passwords.  
+- Expand encryption options with cutting-edge algorithms for stronger data protection.  
+- Add role-based access control for multi-user environments (e.g., family, teams).  
 
 ## Author
 
