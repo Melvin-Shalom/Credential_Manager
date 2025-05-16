@@ -1,55 +1,77 @@
 # Credential Manager
 
-## Discription
+## Description
 
-A Console Based Application for managing passwords was developed using Java and Python. The **Cryptography** module from Python was utilized to ensure data security, and the **Flask** framework was deployed to establish connectivity between Python and Java using API. Additionally, a **virtual environment** was set up to manage dependencies effectively. The required modules are documented in a file named ***Creden_Req.txt***.
+A secure, console-based password manager built using Java and Python. This project leverages the **Cryptography** module for AES-based encryption and **Flask** to bridge Python with Java via REST APIs. A dedicated **virtual environment** handles Python dependencies, all listed in `Creden_Req.txt`. Designed with both practicality and protection in mind.
 
-To know how the Virtual Environment works, [visit here](https://www.freecodecamp.org/news/how-to-setup-virtual-environments-in-python/).
+> 💡 Learn more about virtual environments [here](https://www.freecodecamp.org/news/how-to-setup-virtual-environments-in-python/)
 
 ## Features
 
-- Allows user to Create Truly Random Alpha-Numeric Password.
-- The user can also alter the Length of Password.
-- With its Password Strength Checker, the user can user can check the check of the Password Provided.
-- The Password Organiser Feature uses SHA-256 Algorithm.
-- Stores User Password in an Encrypted Format to keep the Password Encrypted and protected from being read by Others.
+- 🔐 Generates strong, truly random alphanumeric passwords  
+- ✨ Lets users customize password length  
+- 📊 Built-in Password Strength Checker  
+- 🧠 SHA-256 used in the password organizer for added integrity  
+- 🔒 Encrypts stored passwords to ensure data confidentiality  
 
 ## Requirements
 
-- Java 17
-- Python 3.11
-- Flask 3.0
-- Cryptography 42.0
-- SQLAlchemy 2.0
-- Terminal or Command Prompt
+- Java 17  
+- Python 3.11  
+- Flask 3.0  
+- Cryptography 42.0  
+- SQLAlchemy 2.0  
+- Terminal or Command Prompt  
 
-## Steps for Execution
+## Steps to Run
 
-1. #### Open the Terminal and Clone the Repository
-   ```
+1. **Clone the repository**  
+   ```bash
    git clone https://github.com/Melvin-Shalom/Credential_Manager.git
    ```
-2. #### Navigate to the Project Directory
-   ```
+
+2. **Navigate to the project directory**  
+   ```bash
    cd Credential_Manager/
    ```
-3. #### Create and Activate the Virtual Environment
+
+3. **Create & activate the virtual environment**  
+   ```bash
+   python -m venv venv
+   source venv/bin/activate   # For Linux/macOS
+   .\venv\Scripts\activate    # For Windows
    ```
-   source venv/bin/activate
-   ```
-4. #### Install the Requirements
-   ```
+
+4. **Install dependencies**  
+   ```bash
    pip install -r Creden_Req.txt
    ```
-5. #### Execute the Python Script
-   ```
+
+5. **Run the Python server**  
+   ```bash
    python PY_dec.py
    ```
-6. #### Open Another Terminal Window and Navigate to the Project Directory
-   ```
+
+6. **In a new terminal, navigate back to the project directory**  
+   ```bash
    cd Credential_Manager/
    ```
-7. #### Execute the Java Program
-   ```
+
+7. **Compile and run the Java client**  
+   ```bash
    javac Main.java && java Main
    ```
+
+## Usage
+
+- Use the Java client to interact with the secure credential system.  
+- Backend logic like encryption, password generation, and strength checks run via Flask APIs.  
+- All passwords are stored encrypted and processed securely with modern cryptographic standards.  
+
+## Author
+
+Developed with precision and passion by [Melvin Shalom](https://github.com/Melvin-Shalom) 🧠💻
+
+## License
+
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
