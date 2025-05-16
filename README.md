@@ -12,7 +12,11 @@ A secure, console-based password manager built using Java and Python. This proje
 - ✨ Lets users customize password length  
 - 📊 Built-in Password Strength Checker  
 - 🧠 SHA-256 used in the password organizer for added integrity  
-- 🔒 Encrypts stored passwords to ensure data confidentiality  
+- 🔒 Encrypts stored passwords to ensure data confidentiality.
+
+## Credentials
+
+- **Password to access Password Organiser:** `spark`
 
 ## Requirements
 
